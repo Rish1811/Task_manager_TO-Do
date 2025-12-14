@@ -1,74 +1,50 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+### Layout & UI
+- **3-Column Board Layout**: To-Do (light blue), In-Progress (light yellow), Completed (light green). Each displays draggable task cards.
+- **Top Navigation**: App title ("Task Manager") and "Add Task" button (opens modal).
+- **Responsive Design**: Flexbox-based; stacks vertically on mobile (<768px), sidebar filters adapt to horizontal row.
+- **Classic UI**: Georgia serif font, rounded corners, hover effects, subtle shadows—no modern frameworks like Tailwind.
 
-In the project directory, you can run:
+### Creating Tasks
+- Modal popup form for new tasks with fields: Title (required), Description, Priority (dropdown: Low/Medium/High), Due Date (date picker), Status (defaults to To-Do).
+- Auto-generates unique ID and creation timestamp (ISO format via dayjs).
 
-### `npm start`
+### Editing & Deleting Tasks
+- Click a task card to open edit modal (pre-fills all fields, including status).
+- Update any field and save—refreshes the board instantly.
+- Delete button (red, hover-visible) with browser confirm dialog.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Drag & Drop Functionality
+- Powered by react-beautiful-dnd: Drag tasks between boards (e.g., To-Do → In-Progress → Completed).
+- Updates task status instantly on drop; supports reverse drags.
+- Visual feedback: Cards lift/shadow on drag; placeholders maintain layout.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Filtering & Sorting
+- **Left Sidebar Filters**: Vertical stack with labels for clarity.
+  - Priority: All/Low/Medium/High.
+  - Due Date: "By" date filter (shows tasks due on/before selected date).
+  - Status: All/To-Do/In-Progress/Completed.
+- **Sorting Options**: Applied globally after filtering.
+  - Newest First (by creation date).
+  - Oldest First (by creation date).
+  - Closest Due Date (ascending due date).
+- Filters/sorts update boards in real-time without page reload.
 
-### `npm test`
+### Data Handling
+- **Initial Load**: Tasks from `src/tasks.json` (example: one high-priority "Design Homepage UI" task).
+- **Persistence**: All CRUD/drag-drop changes saved to localStorage as JSON array.
+- **Conflict Handling**: If adding a task with a duplicate title in the same board, appends "(1)", "(2)", etc. (normalizes by stripping existing numbers for detection). No "Duplicate Task" badge (used numbering for simplicity).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technologies Used
+- **Core**: React (functional components, hooks like useState/useEffect).
+- **Styling**: Vanilla CSS (no Tailwind).
+- **Drag-Drop**: react-beautiful-dnd (optional per spec; handles smooth interactions).
+- **Dates**: dayjs (parsing/formatting timestamps).
+- **Storage**: localStorage (browser-native, no backend).
 
-### `npm run build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Task_manager_assignment
->>>>>>> 2bd7115b3bb1e2aab5aa22e818ab706a6a5d1b13
+### GitHub Pages (Recommended for Static React App)
+1. Ensure `package.json` has:
